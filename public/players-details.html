@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        #box {
+            width: 2500px;
+            height: 830px;
+            /*background-color: rgb(159, 232, 184);*/
+            border: 4px solid #333;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+    <script>
+        function showPrev(profilepic2, prev2)//copy from gooogle (pic rev on select in webform in javascript)
+        {
+            const [file] = profilepic2.files
+            if (file) {
+                prev2.src = URL.createObjectURL(file)//inbuilt function to get the file name out of the filename
+            }
+        }
+        function showPrev1(profilepic1, prev1)//copy from gooogle (pic rev on select in webform in javascript)
+        {
+            const [file] = profilepic1.files
+            if (file) {
+                prev1.src = URL.createObjectURL(file)//inbuilt function to get the file name out of the filename
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#search").click(function () {
+                let email = $("#txtEmail5").val();
+                // alert(email);
+                let obj = {//define the obj with 3 types type (which generally we use get),url,data
+                    type: "get",
+                    url: "/get-data1",
+                    data: {
+                        txtEmail5: email,
+                        //txtPwd:$("#txtpwd").val()//way to write multiple data or to show
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (responseJsonAry) {
+                        // alert(  JSON.stringify(responseJsonAty)
+                        let acardpicurl = responseJsonAry[0].acardpicurl;
+                        let profilepicurl = responseJsonAry[0].profilepicurl;
+                        let name = responseJsonAry[0].name;
+                        let dob = responseJsonAry[0].dob;
+                        let gender = responseJsonAry[0].gender;
+                        let address = responseJsonAry[0].address;
+                        let contact = responseJsonAry[0].contact;
+                        let game = responseJsonAry[0].game;
+                        let otherinfo = responseJsonAry[0].otherinfo;
+
+                        // alert(mobile + "\n" + pwd + "\n " + picurl);
+                         $("#prev2").prop("src", acardpicurl);
+                        $("#prev1").prop("src", profilepicurl);
+                        $("#hdn").val(acardpicurl);
+                         $("#hdn1").val(profilepicurl);
+                        $("#txtAdd1").val(address);
+                        $("#txtCon1").val(contact);
+                        $("#txtGame").val(game);
+                        $("#txtOth1").val(otherinfo);
+                       
+
+                    }).fail(function (err) { alert (err.message ) })
+            })
+            $("#txtEmail5").keyup(function () {
+                let emailid = $(this).val();
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                if (regex.test(emailid) == false)
+                    $("#errMsgE5").html("Invalid Emailid").css("color", "red");
+                else
+                    $("#errMsgE5").html("valid Emailid").css("color", " green");
+            })
+        })
+    </script>
+</head>
+<script>
+     function showuser() {
+            let activeUser = localStorage.getItem("activeUser");
+            document.getElementById("txtEmail5").value = activeUser;//there is span therfore we have write innerhtml
+        }
+       
+</script>
+<body onload="showuser()">
+    <div class="row ">
+        <div class="col-md-12  text-white" style="padding:8px 0px 8px 0px;">
+            <h2>
+                <center><u style="font-size: 2.5rem;color: black;">Player Profiles
+                    </u>
+
+                </center>
+            </h2>
+        </div>
+    </div>
+    <div class="container mt-4">
+
+
+        <div class="col-md-8 offset-md-2">
+
+            <form class="row g-3" action="/server-upload" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="hdn" class="hdn" name="hdn">
+                <input type="hidden" id="hdn" class="hdn1" name="hdn1">
+                <div id="box">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label" style="font-size: larger;">Email Id <button
+                                type="button" class="btn btn-info" id="search">
+                                <font size=4>Get Data</font>
+                            </button>
+
+                        </label>
+
+                        <input type="email" class="form-control" id="txtEmail5" name="txtEmail5" readonly/>
+
+                        <div id="errMsgE5"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <font color="" size="5">Upload Front of Adhaar Card</font><br>        
+                            <input type="file" name="profilepic2" style="font-size: larger;margin-top: 20px;"
+                                id="profilepic2" onchange="showPrev(profilepic2,prev2);">
+                            <img src="pic/bg1.jpg" width="150" height="100" style="margin-top: 10px;" id="prev2">
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <font color="" size="5">Profile Pic</font><br>
+                            <input type="file" name="profilepic1" style="font-size: larger;"
+                                id="profilepic1" onchange="showPrev1(profilepic1,prev1);">
+                            <img src="pic/bg1.jpg" width="150" height="100" id="prev1" style="margin-top: 10px;">
+                        </div>
+                    </div>
+                     <div class="row">
+
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Name</label>
+                            <input type="text" class="form-control" id="txtName1" name="txtName1"  disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Gender</label>
+                            <input type="number" class="form-control" id="txtGen" name="txtGen" disabled/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">DOB</label>
+                            <input type="number" class="form-control" id="txtDate3" name="txtDate3" disabled/>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Address</label>
+                            <input type="text" class="form-control" id="txtAdd1" name="txtAdd1" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Contact Number</label>
+                            <input type="number" class="form-control" id="txtCon1" name="txtCon1" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                             <label for="inputState" class="form-label" style="font-size: larger;">Games U play</label>
+                            <select type="text" class="form-select" id="txtGame" name="txtGame" required>
+                                <option selected>Choose...</option>
+                                <option value="Cricket">Cricket</option>
+                                <option value="Football">Football</option>
+                                <option value="Basketball">Basketball</option>
+                                <option value="Table tennis">Table tennis</option>
+                                <option value="Hockey">Hockey</option>
+                                <option value="Volleyball">Volleyball</option>
+                                <option value="Handball">Handball</option>
+                                <option value="Archery">Archery</option>
+                                <option value="Powerlifting">Powerlifting</option>
+                                <option value="Chess">Chess</option>
+                                <option value="Kabbadi">Kabbadi</option>
+                                <option value="Golf">Golf</option>
+                                <option value="Pool">Pool</option>
+                                <option value="Swimming">Swimming</option>
+                                <option value="Gymnastics">Gymnastics</option>
+                                <option value="Soccer">Soccer</option>
+                                <option value="Athletics">Athletics</option>
+                                <option value="Fencing">Fencing</option>
+                                <option value="Judo">Judo</option>
+                                <option value="Badminton">Badminton</option>
+                                <option value="Tug of war">Tug of war</option>
+                                <option value="Karate">Karate</option>
+                                <option value="Sprint">Sprint</option>
+                                <option value="Surfing">Surfing</option>
+                                <option value="Ice Hockey">Ice Hockey</option>
+                                <option value="Skateboarding">Skateboarding</option>
+                                <option value="Squash">Squash</option>
+                                <option value="Tennis">Tennis</option>
+                                <option value="Flag Football">Flag Football</option>
+                                <option value="Rowing">Rowing</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Other Info</label>
+                            <input type="text" class="form-control" id="txtOth1" name="txtOth1"
+                                style="height: 100px;"  required/>
+                        </div>
+
+                        <center>
+                            <div style="margin-top: 10px;">
+                                <input type="submit" value="Upload Data" id="Upload" class="btn btn-primary"
+                                    style=" font-size: 2rem; margin-bottom: 5px;margin-top: 15px;">
+                            </div>
+                            <div style="margin-top: 10px;">
+                                <input type="submit" value="Modify" id="Modi" formaction="/server-modify" method="post"class="btn btn-primary"
+                                    enctype="multipart/form-data"
+                                    style=" font-size: 2rem; ">
+                            </div>
+                            
+                        </center>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

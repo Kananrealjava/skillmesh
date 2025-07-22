@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        function showPrev(profilepic, prev)//copy from gooogle (pic rev on select in webform in javascript)
+        {
+            const [file] = profilepic.files
+            if (file) {
+                prev.src = URL.createObjectURL(file)//inbuilt function to get the file name out of the filename
+            }
+        }
+        $(document).ready(function () {
+            $("#search").click(function () {
+                let email = $("#txtEmail3").val();
+                // alert(email);
+                let obj = {//define the obj with 3 types type (which generally we use get),url,data
+                    type: "get",
+                    url: "/get-data",
+                    data: {
+                        txtEmail3: email,
+                        //txtPwd:$("#txtpwd").val()//way to write multiple data or to show
+                    }
+                }
+
+
+                $.ajax(obj).then(
+                    function (responseJsonAry) {
+                        // alert(  JSON.stringify(responseJsonAty)
+                        let orgname = responseJsonAry[0].orgname;
+                        let regnumber = responseJsonAry[0].regnumber;
+                        let address = responseJsonAry[0].address;
+                        let city = responseJsonAry[0].city;
+                        let sports = responseJsonAry[0].sports;
+                        let established = responseJsonAry[0].established;
+                        let website = responseJsonAry[0].website;
+                        let insta = responseJsonAry[0].insta;
+                        let head = responseJsonAry[0].head;
+                        let contactno = responseJsonAry[0].contactno;
+                        let otherinfo = responseJsonAry[0].otherinfo;
+                        let picurl = responseJsonAry[0].picurl;
+                        // alert(mobile + "\n" + pwd + "\n " + picurl);
+
+                        $("#txtOrg").val(orgname);
+                        $("#txtReg").val(regnumber);
+                        $("#txtAdd").val(address);
+                        $("#txtCity").val(city);
+                        $("#txtSports").val(sports);
+                        $("#txtEst").val(established);
+                        $("#txtWeb").val(website);
+                        $("#txtInst").val(insta);
+                        $("#txtHead").val(head);
+                        $("#txtCon").val(contactno);
+                        $("#txtOth").val(otherinfo);
+                        $("#prev").prop("src", picurl);
+                        $("#hdn").val(picurl);
+
+                    }).fail(function (err) { alert(err.message) })
+            })
+            $("#txtEmail3").keyup(function () {
+                let emailid = $(this).val();
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                if (regex.test(emailid) == false)
+                    $("#errMsgE4").html("Invalid Emailid").css("color", "red");
+                else
+                    $("#errMsgE4").html("valid Emailid").css("color", " green");
+            })
+        })
+    </script>
+    <style>
+           #box {
+            width: 80%;
+            height: 99%;
+            background-color: rgb(199, 219, 235);
+            margin: auto;
+            margin-top: 1%;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function showuser() {
+            let activeUser = localStorage.getItem("activeUser");
+            document.getElementById("txtEmail3").value = activeUser;//there is span therfore we have write innerhtml
+        }
+    </script>
+</head>
+
+<body onload="showuser();">
+    <div class="row ">
+        <div class="col-md-12 " style="padding:10px 0px 10px 0px;">
+            <h1>
+                <center><U><b>Welcome to the Organiser Panel </b></U></center>
+            </h1>
+        </div>
+        <div class="container">
+            <div id="box">
+                <div style="font-size: xx-large; color:rgb(30, 68, 203);font-family: Arial, sans-serif;">
+                    <center><u>Organisation Details</u> </center>
+                </div>
+                <form action="/server-signup2" method="post" enctype="multipart/form-data">
+                    <input type="hidden" id="hdn" class="hdn" name="hdn">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Email ID</font><button type="button" class="btn btn-info"
+                                id="search" style="margin-left: 10px; margin-bottom: 10px;">
+                                <font size=4>Search</font>
+                            </button>
+                        </label>
+                        <input type="email" class="form-control" id="txtEmail3" name="txtEmail3" readonly>
+                        <div id="errMsgE4"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Organisation Name</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtOrg" name="txtOrg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Registration no.</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtReg" name="txtReg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Address</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtAdd" name="txtAdd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">City</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtCity" name="txtCity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Deals in Sports</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtSports" name="txtSports" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Established </font>
+                        </label>
+                        <input type="text" class="form-control" id="txtEst" name="txtEst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Website</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtWeb" name="txtWeb" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Insta handle </font>
+                        </label>
+                        <input type="text" class="form-control" id="txtInst" name="txtInst" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Head</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtHead" name="txtHead" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Contact no.</font>
+                        </label>
+                        <input type="text" class="form-control" id="txtCon" name="txtCon" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">
+                            <font size="5" color="">Other information </font>
+                        </label>
+                        <input type="text" style="height: 100px;" class="form-control" id="txtOth" name="txtOth"
+                            aria-required="">
+                    </div>
+                    <p>
+                        <font color="" size="5">Registration Certificate Pic</font><br>
+                        <input type="file" name="profilepic" style="font-size: larger;" id="profilepic"
+                            onchange="showPrev(profilepic,prev);" required>
+                        <img src="pic/bg1.jpg" width="150" height="170" id="prev">
+                    </p>
+                    <center>
+                        <div style="margin-top: 10px;">
+                            <input type="submit" value="Send it to server" id="sign" class="btn btn-primary"
+                                style=" font-size: large; margin-bottom: 5px; ">
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <input type="submit" value="Modify" id="update" formaction="/update-user"
+                                class="btn btn-primary" style=" font-size: large; margin-bottom: 5px; ">
+                        </div>
+                    </center>
+                </form>
+            </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="row ">
+        <div class="col-md-12  bg-info text-white" style="padding:8px 0px 8px 0px;">
+            <center>
+                <h2><u>Welcome Users</u></h2>
+            </center>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 bg-primary text-white">
+                <center>
+                    <h2>Organisation Details</h2>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-md-8 offset-md-2">
+
+            <form  action="/server-signup2" method="post" enctype="multipart/form-data" class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email ID</label>
+                    <button type="button" class="btn btn-info" id="search">
+                        <font size=4>Search</font>
+                    </button>
+                    <input type="email" class="form-control" id="txtEmail3" name="txtEmail3" />
+                </div>
+                    <div class="col-md-6 ">
+                        <label for="inputPassword4" class="form-label">Org. Name</label>
+                        <input type="text" class="form-control" id="txtOrg" name="txtOrg" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Registration Number</label>
+                        <input type="text" class="form-control" id="txtReg" name="txtReg" />
+                    </div>
+            
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <label for="inputPassword4" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="txtAdd" name="txtAdd" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">City</label>
+                        <input type="text" class="form-control" id="txtCity" name="txtCity" />
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <label for="inputPassword4" class="form-label">Deals In Sports</label>
+                        <input type="text" class="form-control" id="txtSports" name="txtSports" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Website</label>
+                        <input type="text" class="form-control" id="txtWeb" name="txtWeb" />
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <label for="inputPassword4" class="form-label">Instagram Link</label>
+                        <input type="text" class="form-control" id="txtInst" name="txtInst" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputAddress" class="form-label">Head of Organization</label>
+                        <input type="text" class="form-control" id="txtOrg" name="txtOrg" />
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <label for="inputPassword4" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="txtCon" name="txtCon" />
+                    </div>
+
+                    <p>
+                        Registration Certificate Pic<br>
+                        <input type="file" name="profilepic"
+                            style="font-size: larger; color: brown; margin-bottom: 10px;" id="profilepic"
+                            onchange="showPrev(profilepic,prev);">
+                        <img src="pic/bg1.jpg" width="150" height="170" id="prev">
+                    </p>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary" id="sign">Send it to server</button>
+                    </div>
+                      <div class="col-6">
+                        <button type="submit" class="btn btn-primary" id="update" formaction="/update-user">Modify</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>--->
+</body>
+
+</html>

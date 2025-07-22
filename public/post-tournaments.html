@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        #box {
+            width: 80%;
+            height: 50%;
+            background-color: rgb(191, 223, 245);
+            margin: auto;
+            margin-top: 1%;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#avail").click(function () {
+                let obj = {
+                    type: "get",
+                    url: "/server-public",
+                    data: {
+                        //id=value niklwane ka process
+                        txtEmail4: $("#txtEmail4").val(),
+                        txtTitle: $("#txtTitle").val(),
+                        txtDate: $("#txtDate").val(),
+                        txtTime: $("#txtTime").val(),
+                        txtLoc: $("#txtLoc").val(),
+                        txtCity: $("#txtCity").val(),
+                        txtSports: $("#txtSports").val(),
+                        txtMin: $("#txtMin").val(),
+                        txtMax: $("#txtMax").val(),
+                        txtDate2: $("#txtDate2").val(),
+                        txtFee: $("#txtFee").val(),
+                        txtPrize: $("#txtPrize").val(),
+                        txtCon: $("#txtCon").val(),
+
+                    }
+                }
+                $.ajax(obj).then(function (response) {
+                    alert(response);
+                    //$("#writing").html(response)//jb kuch write krwana
+                }).fail(function (err) {
+                    alert(err);
+                })
+            })
+             $("#txtEmail4").keyup(function () {
+                let emailid = $(this).val();
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                if (regex.test(emailid) == false)
+                    $("#errMsgE3").html("Invalid Emailid").css("color", "red");
+                else
+                    $("#errMsgE3").html("valid Emailid").css("color", " green");
+            })
+        })
+    </script>
+    <script>
+         function showuser() {
+            let activeUser = localStorage.getItem("activeUser");
+            document.getElementById("txtEmail4").value = activeUser;//there is span therfore we have write innerhtml
+        }
+    </script>
+</head>
+
+<body  onload="showuser();">
+    <div class="row ">
+        <div class="col-md-12  text-white" style="padding:8px 0px 8px 0px;">
+            <h2>
+                <center><u style="color: rgb(0, 0, 0); font-size: 2.5rem;">Event Management Portal
+                    </u>
+
+                </center>
+            </h2>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div id="box">
+            <div class="row ">
+                <div class="col-md-8 offset-md-2" style="color: rgb(53, 53, 248); font-size: 2rem;">
+                    <center>
+                        <b> Tournaments Events</b>
+                    </center>
+                </div>
+            </div>
+
+            <div class="col-md-8 offset-md-2">
+
+                <form class="row g-3">
+
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label" style="font-size: larger;">Email Id</label>
+                        <input type="email" class="form-control" id="txtEmail4" name="txtEmail4" />
+                         <div id="errMsgE3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="inputPassword4" class="form-label" style="font-size: larger;">Event Title</label>
+                            <input type="text" class="form-control" id="txtTitle" name="txtTitle" />
+                        </div>
+
+                        <div class="col-4">
+                            <label for="inputAddress" class="form-label" style="font-size: larger;">Date</label>
+                            <input type="date" class="form-control" id="txtDate" name="txtDate" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputPassword4" class="form-label" style="font-size: larger;">Time</label>
+                            <input type="time" class="form-control" id="txtTime" name="txtTime" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="inputAddress2" class="form-label" style="font-size: larger;">Location</label>
+                            <input type="text" class="form-control" id="txtLoc" name="txtLoc" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCity" class="form-label" style="font-size: larger;">city</label>
+                            <input type="text" class="form-control" id="txtCity" name="txtCity" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label" style="font-size: larger;">Sports Category</label>
+                            <select type="text" class="form-select" id="txtSports" name="txtSports">
+                                <option selected>Choose...</option>
+                                <option value="Cricket">Cricket</option>
+                                <option value="Football">Football</option>
+                                <option value="Basketball">Basketball</option>
+                                <option value="Table tennis">Table tennis</option>
+                                <option value="Hockey">Hockey</option>
+                                <option value="Volleyball">Volleyball</option>
+                                <option value="Handball">Handball</option>
+                                <option value="Archery">Archery</option>
+                                <option value="Powerlifting">Powerlifting</option>
+                                <option value="Chess">Chess</option>
+                                <option value="Kabbadi">Kabbadi</option>
+                                <option value="Golf">Golf</option>
+                                <option value="Pool">Pool</option>
+                                <option value="Swimming">Swimming</option>
+                                <option value="Gymnastics">Gymnastics</option>
+                                <option value="Soccer">Soccer</option>
+                                <option value="Athletics">Athletics</option>
+                                <option value="Fencing">Fencing</option>
+                                <option value="Judo">Judo</option>
+                                <option value="Badminton">Badminton</option>
+                                <option value="Tug of war">Tug of war</option>
+                                <option value="Karate">Karate</option>
+                                <option value="Sprint">Sprint</option>
+                                <option value="Surfing">Surfing</option>
+                                <option value="Ice Hockey">Ice Hockey</option>
+                                <option value="Skateboarding">Skateboarding</option>
+                                <option value="Squash">Squash</option>
+                                <option value="Tennis">Tennis</option>
+                                <option value="Flag Football">Flag Football</option>
+                                <option value="Rowing">Rowing</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Min Age</label>
+                            <input type="Number" class="form-control" id="txtMin" name="txtMin" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label"style="font-size: larger;">Max Age</label>
+                            <input type="Number" class="form-control" id="txtMax" name="txtMax" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">List date of Registration</label>
+                            <input type="date" class="form-control" id="txtDate2" name="txtDate2" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Fee</label>
+                            <input type="Number" class="form-control" id="txtFee" name="txtFee" />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label" style="font-size: larger;">Prize Money</label>
+                            <input type="Number" class="form-control" id="txtPrize" name="txtPrize" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputAddress2" class="form-label" style="font-size: larger;">Contact Person</label>
+                        <input type="text" class="form-control" id="txtCon" name="txtCon" />
+                    </div>
+                    <center>
+                        <div style="margin-top: 10px;">
+                            <input type="button" value="Avail Events" id="avail" class="btn btn-primary"
+                                style=" font-size: 1.5rem; margin-bottom: 5px; ">
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+
+</body>
+
+</html>

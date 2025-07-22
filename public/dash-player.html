@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<script>
+    var mymodule = angular.module("kuchModule", []);
+
+    mymodule.controller("kuchController", function ($scope, $http) {
+        $scope.jsonArray = [];
+        $scope.emailid;
+        $scope.oldPassword;
+        $scope.newPassword;
+
+
+        $scope.doFetchAll = function () {
+            var url = "/do-update-all-users?kuchEmailid=" + $scope.emailid + "&kuchPassword1=" + $scope.oldPassword + "&kuchPassword2=" + $scope.newPassword;;
+
+
+            $http.get(url).then(allGoodFx, someBadFx);
+            function allGoodFx(response) {
+                //resp in JSON array
+                alert(JSON.stringify(response.data));
+                $scope.jsonArray = response.data;
+
+            }
+
+            function someBadFx(response) {
+                alert(JSON.stringify(response.data));
+            }
+        };
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#email").keyup(function () {
+            let emailid = $(this).val();
+            let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            if (regex.test(emailid) == false)
+                $("#errmsg").html("Invalid Emailid").css("color", "red");
+            else
+                $("#errmsg").html("valid Emailid").css("color", "green");
+        })
+        $("#Password").keyup(function () {
+            let password = $(this).val();//getter
+            let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+            if (regex.test(password) == false)
+                $("#errmsg1").html("Invalid password").css("color", "red");
+            else
+                $("#errmsg1").html("valid password").css("color", "green");
+        })
+        $("#Password1").keyup(function () {
+            let password = $(this).val();//getter
+            let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+            if (regex.test(password) == false)
+                $("#errmsg2").html("Invalid password").css("color", "red");
+            else
+                $("#errmsg2").html("valid password").css("color", "green");
+        })
+        $("#eye3").click(function () {
+            let txt = $("#Password").prop("type");
+            if (txt == "password") {
+                $("#Password").prop("type", "text");//type changed
+                $("#eye3").removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+            else {
+                $("#Password").prop("type", "password");
+                $("#eye3").removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+
+
+        })
+        $("#eye4").click(function () {
+            let txt = $("#Password1").prop("type");
+            if (txt == "password") {
+                $("#Password1").prop("type", "text");//type changed
+                $("#eye4").removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+            else {
+                $("#Password1").prop("type", "password");
+                $("#eye4").removeClass("fa-eye-slash").addClass("fa-eye");
+            }
+
+
+        })
+
+    })
+</script>
+<script>
+    function showuser() {
+        let activeUser = localStorage.getItem("activeUser");
+        document.getElementById("welcome").innerHTML = activeUser;//there is span therfore we have write innerhtml
+    }
+    function dologout() {
+        localStorage.removeItem("activeUser");
+        location.href = "index.html";
+    }
+</script>
+
+<body style="background-color: rgb(238, 225, 225);" ng-app="kuchModule" ng-controller="kuchController"
+    onload="showuser();">
+    <div class="row ">
+        <div class="col-md-12   text-danger" style="padding:8px 0px 8px 0px;">
+            <h1>
+                <center><u>Welcome Player : <span id="welcome"></span></u></center>
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10  offset-md-1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card"
+                            style="border: 2px solid black;margin-bottom: 10px;">
+                            <img src="pic/profile.jpg" class="card-img-top" alt="..." style="border-radius: 50%;" />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: red;">Player Profile </h5>
+                                <a href="players-details.html" class="btn btn-primary">Player Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 " style="float: left;">
+                        <div class="card"
+                            style="border: 2px solid black; margin-bottom: 10px;">
+                            <img src="pic/tournament-sports-league-logo-emblem_1366-201.avif " class="card-img-top"
+                                alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: red;"> Tournaments Events</h5>
+                                <a href="tournamentFinder.html" class="btn btn-primary">Post Events</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 " style="float: left;">
+                        <div class="card"
+                            style="border: 2px solid black; margin-bottom: 10px;">
+                            <img src="pic/settings.jpg" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(241, 81, 81);"> Settings</h5>
+                                <a href="" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Settings</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <center>
+            <input type="button" value="LogOut" id="logout" class="btn btn-danger" onclick="dologout();"
+                style=" font-size: x-large; margin-top: 60px; box-shadow: 2px 2px 2px  black; ">
+        </center>
+    </div>
+    <center>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: red;font-size: 2.5rem;">
+                            Settings</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="name@example.com" ng-model="emailid">
+                            <label for="floatingInput" style="color: rgb(96, 96, 244);">Email ID</label>
+                            <div id="errmsg">*</div>
+                        </div>
+
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="Password" name="Password"
+                                placeholder="Password" ng-model="oldPassword">
+                            <label for="floatingPassword" style="color: rgb(96, 96, 244);">Old Password </label><i
+                                class="fa-solid fa-eye fa-bounce" id="eye3"></i>
+                            <div id="errmsg1"></div>
+                        </div>
+
+                        <div class="form-floating">
+
+                            <input type="password" class="form-control" id="Password1" name="Password1"
+                                placeholder="Password" style="margin-top: 20px;" ng-model="newPassword">
+                            <label for="floatingPassword" style="color: rgb(96, 96, 244);">New Password</label><i
+                                class="fa-solid fa-eye fa-bounce" id="eye4"></i>
+                            <div id="errmsg2"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <input type="button" value="Update Password" class="btn btn-danger"
+                            style=" margin-bottom: 15px;" ng-click="doFetchAll();">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>

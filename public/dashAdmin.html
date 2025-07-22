@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</head>
+<script>
+    function showuser() {
+        let activeUser = localStorage.getItem("activeUser");
+        document.getElementById("welcome").innerHTML = activeUser;//there is span therfore we have write innerhtml
+    }
+    function dologout() {
+        localStorage.removeItem("activeUser");
+        location.href = "index.html";
+    }
+</script>
+
+<body style="background-color: rgb(238, 225, 225);" onload="showuser();">
+    <div class="row ">
+        <div class="col-md-12   text-danger" style="padding:8px 0px 8px 0px;">
+            <h1>
+                <center><u>Welcome Admin : <span id="welcome"></span></u></center>
+            </h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10  offset-md-1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card"
+                            style="border: 2px solid black;margin-bottom: 10px;">
+                            <img src="pic/ad.jpg" class="card-img-top" alt="..." style="border-radius: 50%;" />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: red;">Admin Panel </h5>
+                                <a href="admin-users-console.html" class="btn btn-primary">Users Console</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 " style="float: left;">
+                        <div class="card"
+                            style="border: 2px solid black;margin-bottom: 10px;">
+                            <img src="pic/aaa.png" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: red;">Organiser Panel</h5>
+                                <a href="organiser-manager.html" class="btn btn-primary">Organiser Console</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 " style="float: left;">
+                        <div class="card"
+                            style="border: 2px solid black;margin-bottom: 10px;">
+                            <img src="pic/player.webp" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(241, 81, 81);">Player Panel</h5>
+                                <a href="players-manager.html" class="btn btn-primary">Player Console</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <center>
+                            <input type="button" value="LogOut" id="logout" class="btn btn-danger" onclick="dologout();"
+                                style=" font-size: x-large; margin-top: 60px; box-shadow: 2px 2px 2px  black; ">
+                        </center>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
