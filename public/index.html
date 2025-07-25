@@ -36,7 +36,7 @@
                 })
             })
 
-            $("#search").click(function () {
+            /*$("#search").click(function () {
                 let email = $("#txtEmail").val();
                 // alert(email);
                 let obj = {//define the obj with 3 types type (which generally we use get),url,data
@@ -62,7 +62,7 @@
 
 
                     }).fail(function (err) { alert(err.message) })
-            })
+            })*/
             $("#txtEmail").keyup(function () {
                 let emailid = $(this).val();
                 let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -178,28 +178,26 @@
             margin-top: 10px;
         }*/
         #logo {
-            width: 80px;
-            height: 70px;
+            width: 65px;
+            height: 50px;
             float: left;
-            margin-top: 20px;
-
-            background-image: url(./pic/slogo.avif);
+            margin-top: 10px;
+            margin-left: 20px;
+            border-radius: 50%;
             background-size: contain;
             background-size: cover;
             border: 3px solid black;
-            box-shadow: 2px 2px 2px grey;
+            /*  box-shadow: 2px 2px 2px grey;*/
+
         }
 
         .txt {
-            font-size: 3rem;
-            margin-left: 100px;
+            font-size: 2rem;
+            margin-left: 20px;
             float: left;
-            margin-top: 10px;
-            color: rgb(93, 93, 243);
+            margin-top: 5px;
+            color: white;
             font-family: cursive;
-            border: 5px double black;
-            border-radius: 25px;
-            box-shadow: 0 0 20px rgba(1, 59, 26, 0.3);
         }
     </style>
     <style>
@@ -212,14 +210,25 @@
             transform: translateY(-8px);
             box-shadow: 0 8px 16px rgb(50, 50, 50, 0.8);
         }
+
+        .image-text {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+
+        }
+        
     </style>
 </head>
 
 <body>
-    <nav class="navbar" style="background-color: #faf3ed;">
+    <!-- <nav class="navbar" style="background-color: #faf3ed;">
         <div class="container ">
             <a class="navbar-brand" href="#">
-                <img src="pic/slogo.avif" alt="" id="logo">
+                <img src="pic/sm4.jpg" alt="" id="logo">
                 <span class="txt"><b>SkillMesh</b></span>
             </a>
             <div>
@@ -234,8 +243,47 @@
                 </button>
             </div>
         </div>
+    </nav>-->
+    <nav class="navbar  fixed-top" style="background-color:#40464b;">
+        <div>
+            <a class="navbar-brand" href="#">
+                <img src="pic/sm5.jpg" alt="Bootstrap" id="logo">
+                <span class="txt"><b>SkillMesh</b></span>
+            </a>
+
+        </div>
+
+
+        <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
+            <div class="navbar-nav">
+                <center>
+                    <a class="nav-link " aria-current="page" href="#ser"
+                        style="font-size: 1rem;color: white;margin-top: 20px;">Our Services</a>
+                    <a class="nav-link" href="#mis" style="font-size: 1rem;color: white;">Our Mission</a>
+                    <a class="nav-link" href="#meet" style="font-size: 1rem;color: white;">Meet the Developers</a>
+                    <a class="nav-link" href="#reach" style="font-size: 1rem;color: white;">Reach Us</a>
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-outline-dark text-white" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" style=" font-size: 1.5rem;">
+                            Signup <i class="fa-solid fa-arrow-up-right"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-outline-light " data-bs-toggle="modal"
+                            data-bs-target="#lo-login" style=" font-size: 1.5rem;margin-left: 5px;margin-right: 10px;">
+                            Login
+                        </button>
+                    </div>
+                </center>
+            </div>
+        </div>
+
     </nav>
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="pic/sp2.jpg" class="d-block w-100 " style="height: 400px;border: 1px  solid gray;" alt="...">
@@ -247,16 +295,24 @@
                 <img src="pic/sp5.jpg" class="d-block w-100" style="height: 400px;border: 1px  solid gray;" alt="...">
             </div>
         </div>
+    </div>-->
+    <div>
+        <img src="pic/spor.avif" class="d-block w-100" style="height: 400px;border: 1px  solid gray;" alt="...">
+        <center <div class="image-text">
+            Welcome to<br> <span class="highlight" style="color: #e63946;">SkillMesh</span>
+            <p style="font-size: 1.5rem; color: white;">"Streamline Tournament Management and Player Participation in
+                One Platform."</p>
     </div>
+    </div>
+
     <center>
-        <span style="font-size: 2rem;margin-top: 40px;color: #463f3a;font-family: cursive;"><b><u>Our
+        <span style="font-size: 2rem;color: #463f3a;font-family: cursive;" id="ser"><b><u>Our
                     Services</u></b></span>
     </center>
     <div class="container py-4">
         <div class="row">
-            <div class="col-md-3" style="margin-top: 20px;">
-                <div class="card custom-card"
-                    style="border: 2px solid black; margin-left: 10px; background-color: #f7f0e9;">
+            <div class="col-md-3" style="margin-top: 10px;">
+                <div class="card custom-card" style="border: 2px solid black; margin-left: 10px;">
                     <img src="pic/tt1.avif" class="card-img-top" alt="..." height="345">
                     <div class="card-body">
                         <h5 class="card-title" style="color: red;">Tournaments( "Battle for Glory")</h5>
@@ -266,7 +322,7 @@
                 </div>
             </div>
             <div class="col-md-3" style="margin-top: 20px;">
-                <div class="card custom-card" style="border: 2px solid black;background-color: #f7f0e9;">
+                <div class="card custom-card" style="border: 2px solid black;">
                     <img src="pic/or.png" class="card-img-top" alt="..." height="325">
                     <div class="card-body">
                         <h5 class="card-title" style="color: red;">Organizers( "Powering the Tournament")</h5>
@@ -278,7 +334,7 @@
                 </div>
             </div>
             <div class="col-md-3" style="margin-top: 20px;">
-                <div class="card custom-card" style="border: 2px solid black;background-color: #f7f0e9;">
+                <div class="card custom-card" style="border: 2px solid black;">
                     <img src="pic/player.webp" class="card-img-top" alt="..." height="280">
                     <div class="card-body">
                         <h5 class="card-title" style="color: red;">Sports Person("Faces of the Field")</h5>
@@ -290,7 +346,7 @@
                 </div>
             </div>
             <div class="col-md-3" style="margin-top: 20px;">
-                <div class="card custom-card" style="border: 2px solid black;background-color: #f7f0e9;">
+                <div class="card custom-card" style="border: 2px solid black;">
                     <img src="pic/pp1.webp" class="card-img-top" alt="..." height="330">
                     <div class="card-body">
                         <h5 class="card-title" style="color: red;">"Words to Play By"</h5>
@@ -304,38 +360,40 @@
         </div>
     </div>
     <center>
-        <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;color: #463f3a;"><b><u>Mission("Our Vision &
-                    Values")</u></b></span>
+        <span style="font-size: 1.5rem;margin-top: 40px;font-family: cursive;color: #463f3a;"
+            id="mis"><b><u>Mission</u></b></span>
     </center>
-    <div class="container py-4">
+    <div class="container py-4" style="background-color: #f8f5f3;">
         <div class="row">
             <div class="col-md-6 ">
                 <img src="pic/mi.jpg" class="img-fluid" alt="..."
                     style="width: 2000px;height: 300px;background-color: #fff1e6;">
             </div>
-            <div class="col-md-6 d-flex align-items-center" style="background-color: #faf3ed;">
-                <span style="font-size: 1.5rem;">Our mission is to inspire, empower, and elevate the spirit of
+            <div class="col-md-6 d-flex align-items-center">
+                <span style="font-size: 1.2rem;"><center><span style="font-size: x-large;color: red;font-family: cursive;">Our Vision and Values</span></center><br>Our mission is to inspire, empower, and elevate the spirit of
                     sportsmanship. As we know that there are
                     soo many players who are not able to participate in tournaments despite they are very hardworking
                     and
                     capable for the opportunites.So we have made this webpage to solve their problem by letting know all
                     about the information of tournaments which will be best suited to thier criteria.
-                    championships."</span>
+                </span>
             </div>
         </div>
     </div>
     <center>
-        <span style="font-size: 2rem;margin-top: 40px;color: #333333;font-family: cursive;"><b><u>Meet the
+        <span style="font-size: 2rem;margin-top: 40px;color: #333333;font-family: cursive;" id="meet"><b><u>Meet the
                     Developers</u></b></span>
     </center>
-    <div class="container py-4">
+    <div class="container py-4" style="border: 2px solid black;">
         <div class="row">
-            <div class="col-md-6 " style="background-color: #f5ebe0;">
-                <center> <img src="pic/rkb.jpg" class="img-fluid" alt="..."
+            <div class="col-md-6 ">
+                <center>
+                    <span style="font-size: 1.5rem;color: red;font-family: cursive;">Under the Guidance Of:</span><br>
+                    <img src="pic/rkb.jpg" class="img-fluid" alt="..."
                         style="height: 170px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
                 </center>
                 <div style="text-align: center; margin-top: 20px;">
-                    <span style="font-size: 1.5rem; font-weight: bold;color: red;">Under the Guidance Of:</span><br>
+
                     <span style="font-size: 1rem; font-weight: bold;">
                         Mr. Rajesh Bansal<br>
                         Author of the book <em>"Real Java"</em><br>
@@ -346,45 +404,51 @@
                     </span>
                 </div>
             </div>
-            <div class="col-md-6 " style="background-color: #e3d5ca;">
-                <center> <img src="pic/me2.jpg" class="img-fluid" alt="..."
+            <div class="col-md-6 ">
+                <center>
+                    <span style="font-size: 1.5rem; color: red;font-family: cursive;">Developed by:</span><br><img src="pic/me2.jpg"
+                        class="img-fluid" alt="..."
                         style="height: 150px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
                 </center>
                 <div style="text-align: center;">
-                    <span style="font-size: 1.5rem; font-weight: bold;color: red;">Developed by:</span><br>
+
                     <span style="font-size: 1rem; font-weight: bold;">
-                        Kanan<br>
+                        Kanan<br><br><br>
                         Ist year student(2025)<br>
                         Department of Computer Science and Engineering
                     </span>
                 </div>
             </div>
         </div>
-        <center>
-            <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;"><b><u>Reach Us</u></b></span>
-        </center>
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-md-6">
+    </div>
+    <center>
+        <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;" id="reach"><b><u>Reach Us</u></b></span>
+    </center>
+    <div class="container py-4" style="background-color: #f8f5f3;border: 2px solid black;">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+
+                <div class="ratio ratio-4x3">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.9314497921932!2d74.94271779999998!3d30.210503900000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753019711473!5m2!1sen!2sin"
-                        width="620" height="450" style="border:2px solid black;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.9314497921932!2d74.94271779999998!3d30.210503900000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753443279653!5m2!1sen!2sin"
+                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <div class="col-md-6" style="background-color: #f5ebe0;">
-                    <div style="text-align: center; margin-top: 120px;">
-                        <span style="font-size: 1.5rem; font-weight: bold;color: red;">Contact Details</span><br>
-                        <span style="font-size: 1rem; font-weight: bold;">
-                            Email: kanangarg45@gmail.com<br>
-                            Phone:+91-6239*****8<br>
-                            Address:House no.6269 mata rani gali near foggi chowk<br>
-                            City :Bathinda
-                        </span>
-                    </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="w-100 text-center">
+                    <span style="font-size: 1.5rem; font-weight: bold; color: red;font-family: cursive;">Contact Details</span><br>
+                    <span style="font-size: 1rem; font-weight: bold;">
+                        Email: kanangarg45@gmail.com<br>
+                        Phone: +91-6239*****8<br>
+                        Address: House no.6269, Mata Rani Gali, near Foggi Chowk<br>
+                        City: Bathinda
+                    </span>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Signup Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -394,7 +458,7 @@
 
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        <font color="red">Signup Panel</font>
+                        <font color="red">Signup Modal</font>
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -404,12 +468,9 @@
                         <div class="mb-2">
                             <label class="form-label">
                                 <font size="5" color="blue">Email Id</font>
-                                <button type="button" class="btn btn-info btn-sm ms-2" id="search">
-                                    <font size="4">Search</font>
-                                </button>
+
                             </label>
-                            <input type="email" class="form-control" id="txtEmail" name="txtEmail"
-                                value="kanan@gmail.com">
+                            <input type="email" class="form-control" id="txtEmail" name="txtEmail">
                             <div id="errMsgE"></div>
                             <div class="form-text">We'll never share your email with anyone else.</div>
                         </div>
@@ -431,7 +492,7 @@
                                 <option selected>Choose...</option>
                                 <option value="Organiser">Organizer</option>
                                 <option value="Player">Player</option>
-                                <option value="Admin">Admin</option>
+
                             </select>
                             <span class="input-group-text text-danger">
                                 <i class="fa-solid fa-heart fa-beat"></i>
@@ -467,8 +528,7 @@
                             <label class="form-label">
                                 <font size="5" color="blue">Email Id</font>
                             </label>
-                            <input type="email" class="form-control" id="txtEmail2" name="txtEmail2"
-                                value="kanan@gmail.com">
+                            <input type="email" class="form-control" id="txtEmail2" name="txtEmail2">
                             <div id="errMsgE2"></div>
                             <div class="form-text">We'll never share your email with anyone else.</div>
                         </div>
@@ -478,7 +538,7 @@
                                 <font size="5" color="blue">Password</font>
                                 <i class="fa-solid fa-eye fa-bounce ms-2" id="eye2"></i>
                             </label>
-                            <input type="password" class="form-control" id="txtPwd2" name="txtPwd2" value="Kanan123">
+                            <input type="password" class="form-control" id="txtPwd2" name="txtPwd2">
                             <div id="errMsgP2"></div>
                         </div>
 
