@@ -161,6 +161,7 @@
         })
     </script>
     <style>
+      
         #logo {
             width: 60px;
             height: 40px;
@@ -198,19 +199,106 @@
         .image-text {
             position: absolute;
             top: 20%;
-            left: 15%;
+            left: 18%;
             color: white;
             font-size: 3rem;
             font-weight: bold;
 
         }
     </style>
-  
+    <style>
+        body {
+            background: linear-gradient(to right, #f5f0ff, #ffffff);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(128, 0, 128, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        #na {
+            font-weight: bold;
+            color: red;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #name2 {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+        }
+
+        #email {
+
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+
+
+        }
+
+        #message {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+
+
+        }
+
+        #input {
+            border-radius: 25px;
+            resize: none;
+        }
+
+        #input {
+            border-color: black;
+            box-shadow: 0 0 3px black;
+        }
+
+        #msg {
+            background-color: rgb(77, 76, 76);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    </style>
 </head>
 
 <body>
-
-
+   
+         
     <nav class="navbar  fixed-top" style="background-color:#40464b;">
         <div>
             <a class="navbar-brand" href="#">
@@ -250,24 +338,25 @@
         </div>
 
     </nav>
+    
+   
+    
+        <div style="position: relative;">
+            <img src="pic/spor1.jpg" class="d-block w-100" style="height: 400px;border: 1px  solid gray;margin-top: 29px;" alt="...">
+            <center>
+                <div class="image-text">
+                    Welcome to<br> <span class="highlight" style="color: #e63946;">SkillMesh</span>
+                    <p style="font-size: 1.5rem; color: white;">"Streamline Tournament Management and Player
+                        Participation in
+                        One Platform."
+                    </p>
+                </div>
+
+            </center>
 
 
-    <div style="position: relative;">
-        <img src="pic/spor1.jpg" class="d-block "
-            style="height: 400px;border: 1px  solid gray;width: 100%;margin-top: 20px;" alt="...">
-        <center>
-            <div class="image-text">
-                Welcome to<br> <span class="highlight" style="color: #e63946;">SkillMesh</span>
-                <p style="font-size: 1.5rem; color: white;">"Streamline Tournament Management and Player
-                    Participation in
-                    One Platform."
-                </p>
-            </div>
-
-        </center>
-
-
-    </div>
+        </div>
+  
 
     <center>
         <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;color: #463f3a;" id="ser"><b><u>Our
@@ -391,8 +480,10 @@
     <center>
         <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;" id="reach"><b><u>Reach Us</u></b></span>
     </center>
-
-            <!--  <div class="col-md-6 ">
+    <div class="container py-4"
+        style="background-color: #f8f5f3; box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);margin-top: 10px;">
+        <div class="row">
+            <div class="col-md-6 ">
                 <div class="form-container">
                     <form id="contactForm">
                         <div class="form-group">
@@ -417,34 +508,34 @@
                     </form>
                 </div>
 
-            </div>-->
-          <div class="container py-4"  style="background-color: #f8f5f3; box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);margin-top: 10px;">
-    <div class="row">
-        <div class="col-md-6">
-            <!-- Responsive iframe wrapper -->
-            <div class="ratio ratio-4x3">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.9314497921932!2d74.94271779999998!3d30.210503900000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753443279653!5m2!1sen!2sin" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
             </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-            <div class="w-100 text-center">
-                <span style="font-size: 1.5rem; font-weight: bold; color: red;">Contact Details</span><br>
-                <span style="font-size: 1rem; font-weight: bold;">
-                    Email: kanangarg45@gmail.com<br>
-                    Phone: +91-6239*****8<br>
-                    Address: House no.6269, Mata Rani Gali, near Foggi Chowk<br>
-                    City: Bathinda
-                </span>
+            <div class="col-md-6 ">
+                <div class="w-100 text-center">
+                    <span style="font-size: 1.5rem; font-weight: bold; color: red;font-family: cursive;">Contact
+                        Details</span><br>
+                    <span style="font-size: 1rem; font-weight: bold;">
+                        Email: kanangarg45@gmail.com<br>
+                        Phone: +91-6239*****8<br>
+                        Address: House no.6269, Mata Rani Gali, near Foggi Chowk<br>
+                        City: Bathinda
+                    </span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.9314497921932!2d74.94271779999998!3d30.210503900000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753443279653!5m2!1sen!2sin"
+                                style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" width="500" height="380">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
 
 
     <!-- Signup Modal -->
