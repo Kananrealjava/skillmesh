@@ -205,7 +205,85 @@
 
         }
     </style>
-  
+    <style>
+        #name2 {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+        }
+
+        #email {
+
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+
+
+        }
+
+        #message {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 35px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px black;
+            font-size: 1rem;
+
+
+        }
+
+        #input {
+            border-radius: 25px;
+            resize: none;
+        }
+
+        #input {
+            border-color: black;
+            box-shadow: 0 0 3px black;
+        }
+
+        #msg {
+            background-color: rgb(77, 76, 76);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            width: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #na {
+            font-weight: bold;
+            color: red;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-container {
+         
+            margin-top:5px;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(128, 0, 128, 0.1);
+        }
+    </style>
+
 </head>
 
 <body>
@@ -354,36 +432,43 @@
         style="background-color: #f8f5f3;box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);margin-top: 10px;">
         <div class="row">
             <div class="col-md-6 ">
-                <center>
-                    <span style="font-size: 1.5rem;color: red;font-family: cursive;">Under the Guidance Of:</span><br>
-                    <img src="pic/rkb.jpg" class="img-fluid" alt="..."
-                        style="height: 170px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
-                </center>
-                <div style="text-align: center; margin-top: 20px;">
+                <div class="form-container">
+                    <center>
+                        <span style="font-size: 1.5rem;color: red;font-family: cursive;">Under the Guidance
+                            Of:</span><br>
+                        <img src="pic/rkb.jpg" class="img-fluid" alt="..."
+                            style="height: 170px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
+                    </center>
+                    <div style="text-align: center; margin-top: 20px;">
 
-                    <span style="font-size: 1rem; font-weight: bold;">
-                        Mr. Rajesh Bansal<br>
-                        Author of the book <em>"Real Java"</em><br>
-                        Bangalore Computer Education,Address: Opp. St. No. 18,, Om Complex,, Ajit Road (Main),,
-                        Bathinda, Punjab 151001<br>
-                        Phone: 098722 46056<br>
-                        A great mentor and very supportive teacher.
-                    </span>
+                        <span style="font-size: 1rem; font-weight: bold;">
+                            <span style="font-size: 1.5rem; font-weight: bold;">Mr.Rakesh K Bansal</span><br>
+                            Author of the book <em>"Real Java"</em><br>
+                            Bangalore Computer Education,Address: Opp. St. No. 18,, Om Complex,, Ajit Road (Main),,
+                            Bathinda, Punjab 151001<br>
+                            Phone: 098722 46056<br>
+                            A great mentor and very supportive teacher.
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 ">
-                <center>
-                    <span style="font-size: 1.5rem; color: red;font-family: cursive;">Developed by:</span><br><img
-                        src="pic/me2.jpg" class="img-fluid" alt="..."
-                        style="height: 150px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
-                </center>
-                <div style="text-align: center;">
+                <div class="form-container">
+                    <center>
+                        <span style="font-size: 1.5rem; color: red;font-family: cursive;">Developed by:</span><br><img
+                            src="pic/me2.jpg" class="img-fluid" alt="..."
+                            style="height: 150px; border-radius: 50%;margin-top: 20px;margin-bottom: 20px;margin-left: 20px;border: 2px solid black;">
+                    </center>
+                    <div style="text-align: center;">
 
-                    <span style="font-size: 1rem; font-weight: bold;">
-                        Kanan<br><br><br>
-                        Ist year student(2025)<br>
-                        Department of Computer Science and Engineering
-                    </span>
+                        <span style="font-size: 1rem; font-weight: bold;">
+                            <span style="font-size: 1.5rem; font-weight: bold;">Kanan</span><br><br><br><br><br>
+                            Ist year student(2025)<br>
+                            Department of Computer Science and Engineering At Gaini Zailsen College<br>
+                            Full Stack Developer<br>
+
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -392,7 +477,21 @@
         <span style="font-size: 2rem;margin-top: 40px;font-family: cursive;" id="reach"><b><u>Reach Us</u></b></span>
     </center>
 
-            <!--  <div class="col-md-6 ">
+
+    <div class="container py-4"
+        style="background-color: #f8f5f3; box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);margin-top: 10px;">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div  class="ratio ratio-4x3">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.931450673763!2d74.94014287560128!3d30.210503874840402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753715868207!5m2!1sen!2sin"
+                        width="450" height="550" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="col-md-4 ">
                 <div class="form-container">
                     <form id="contactForm">
                         <div class="form-group">
@@ -417,34 +516,23 @@
                     </form>
                 </div>
 
-            </div>-->
-          <div class="container py-4"  style="background-color: #f8f5f3; box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);margin-top: 10px;">
-    <div class="row">
-        <div class="col-md-6">
-            <!-- Responsive iframe wrapper -->
-            <div class="ratio ratio-4x3">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.9314497921932!2d74.94271779999998!3d30.210503900000017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391732988a206525%3A0xfa0038708ef207b!2sMata%20Rani%20St%2C%20Old%20City%2C%20Bathinda%2C%20Punjab%20151005!5e0!3m2!1sen!2sin!4v1753443279653!5m2!1sen!2sin" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
             </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-            <div class="w-100 text-center">
-                <span style="font-size: 1.5rem; font-weight: bold; color: red;">Contact Details</span><br>
-                <span style="font-size: 1rem; font-weight: bold;">
-                    Email: kanangarg45@gmail.com<br>
-                    Phone: +91-6239*****8<br>
-                    Address: House no.6269, Mata Rani Gali, near Foggi Chowk<br>
-                    City: Bathinda
-                </span>
+            <div class="col-md-4 d-flex align-items-center">
+                <div class="form-container">
+                    <div class="w-100 text-center">
+                        <span style="font-size: 1.5rem; font-weight: bold; color: red;">Contact Details</span><br>
+                        <span style="font-size: 1rem; font-weight: bold;">
+                            Email: kanangarg45@gmail.com<br>
+                            Phone: +91-6239*****8<br>
+                            Address: House no.6269, Mata Rani Gali, near Foggi Chowk<br>
+                            City: Bathinda
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 
     <!-- Signup Modal -->
