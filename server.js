@@ -205,16 +205,7 @@ app.get("/server-signup", function (req, resp) {
       resp.send(errKuch.message);
   })
 })
-app.get("/get-one", function (req, resp) {
-  //console.log(req.query.txtEmail);
-  mySqlVen.query("select * from  ussers2025 where emailid=?", [req.query.txtEmail], function (errKuch, allRecords) {
-    if (allRecords.length == 0)
-      resp.send("No Record found");
-    else
-      resp.json(allRecords);
 
-  })
-})
 app.get("/do-login", function (req, resp) {
   //console.log(req.query.txtEmail);
   let emailid = req.query.txtEmail2;
@@ -558,5 +549,16 @@ app.get("/do-update-all-users", function (req, resp) {
 
     //console.log(allRecords)
     //resp.send(allRecords);
+  })
+})
+app.get("/get-one", function (req, resp) {
+  let name1 = req.query.name2;
+  let email1 = req.query.email;
+  let message1 = req.query.message;
+  mySqlVen.query("insert into message values(?,?,?)", [name1, email1, message1], function (errKuch) {
+    if (errKuch == null)
+      resp.send("WE have recieved your message.We will get back to you soon");
+    else
+      resp.send(errKuch.message);
   })
 })
