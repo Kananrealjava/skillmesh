@@ -21,8 +21,29 @@
             location.href="index.html";
         }
 </script>
+ <style>
+        .custom-card {
+            box-shadow: 0 4px 8px rgb(50, 50, 50, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-<body onload="showuser();" style="background-color: rgb(238, 225, 225);">
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgb(50, 50, 50, 0.8);
+        }
+
+        .image-text {
+            position: absolute;
+            top: 20%;
+            left: 18%;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+
+        }
+    </style>
+
+<body onload="showuser();" style="background-color: ghostwhite;">
   <center>
     <!--<div sty>
    <div class="card"   style="border: 2px solid black; width: 18rem;" >
@@ -50,16 +71,16 @@
 </div>
 </div>-->
 
-    <div><span style="font-size: xx-large; color: black;"><b><u> Welcome Organiser : <span
-              id="welcome"></span></u></b></span></div>
+    <div style="margin-top: 20px ;"><span style="font-size: x-large; color: black;"><b> Welcome Organiser : <span
+              id="welcome"></span></b></span></div>
     <div class="container">
       <div class="row">
         <div class="col-md-10  offset-md-1">
           <div class="row">
             <div class="col-md-4">
-              <div class="card"
-                style="border: 2px solid black; margin-top: 25px; ">
-                <img src="pic/sports.jpg" class="card-img-top" alt="..." />
+              <div class="card custom-card"
+                style="border: 2px solid black; margin-top: 60px; ">
+                <img src="pic/sports.jpg" class="card-img-top" alt="..."  height="200"/>
                 <div class="card-body">
                   <h5 class="card-title" style="color: red;">Importance of organizers</h5>
                   <p class="card-text" style="color: blue;">
@@ -72,9 +93,9 @@
             </div>
 
             <div class="col-md-4 " style="float: left;">
-              <div class="card"
-                style="border: 2px solid black; margin-top: 25px; ">
-                <img src="pic/events.avif " class="card-img-top" alt="..." />
+              <div class="card custom-card"
+                style="border: 2px solid black; margin-top: 60px; ">
+                <img src="pic/events.avif " class="card-img-top" alt="..." height="190"/>
                 <div class="card-body">
                   <h5 class="card-title" style="color: red;"> Tournaments Events</h5>
                   <p class="card-text" style="color: blue;">
@@ -87,9 +108,9 @@
               </div>
             </div>
             <div class="col-md-4 ">
-              <div class="card"
-                style="border: 2px solid black; margin-top: 25px;">
-                <img src="pic/mo.jpg" class="card-img-top" alt="..." />
+              <div class="card custom-card"
+                style="border: 2px solid black; margin-top: 60px;">
+                <img src="pic/mo.jpg" class="card-img-top" alt="..." height="265"/>
                 <div class="card-body">
                   <h5 class="card-title" style="color: red;"> Tournaments Manager</h5>
                   <p class="card-text" style="color: blue;">
