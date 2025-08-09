@@ -436,7 +436,7 @@ app.get("/block-one", function (req, resp) {
         resp.send("emailid");
     }
     else
-      resp.send(errKuch);
+      resp.send(errKuch.message);
 
   })
 })
