@@ -111,13 +111,35 @@
     }
 </script>
 
-<body style="background-color: rgb(238, 225, 225);" ng-app="kuchModule" ng-controller="kuchController"
-    onload="showuser();">
+     <style>
+        .custom-card {
+            box-shadow: 0 4px 8px rgb(50, 50, 50, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgb(50, 50, 50, 0.8);
+        }
+
+        .image-text {
+            position: absolute;
+            top: 20%;
+            left: 18%;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+
+        }
+    </style>
+
+<body  ng-app="kuchModule" ng-controller="kuchController"
+    onload="showuser();" style="background-color: ghostwhite;">
     <div class="row ">
-        <div class="col-md-12   text-danger" style="padding:8px 0px 8px 0px;">
-            <h1>
-                <center><u>Welcome Player : <span id="welcome"></span></u></center>
-            </h1>
+        <div class="col-md-12" style="padding:5px 0px 5px 0px;margin-top: 20px;">
+            <h2>
+                <center>Welcome Player : <span id="welcome"></span></center>
+            </h2>
         </div>
     </div>
     <div class="container">
@@ -125,9 +147,9 @@
             <div class="col-md-10  offset-md-1">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="card"
-                            style="border: 2px solid black;margin-bottom: 10px;">
-                            <img src="pic/profile.jpg" class="card-img-top" alt="..." style="border-radius: 50%;" />
+                        <div class="card custom-card"
+                            style="border: 2px solid black;margin-bottom: 10px;margin-top: 60px;">
+                            <img src="pic/profile.jpg" class="card-img-top" alt="..." style="border-radius: 50%;" height="250" />
                             <div class="card-body">
                                 <h5 class="card-title" style="color: red;">Player Profile </h5>
                                 <a href="players-details.html" class="btn btn-primary">Player Details</a>
@@ -136,10 +158,10 @@
                     </div>
 
                     <div class="col-md-4 " style="float: left;">
-                        <div class="card"
-                            style="border: 2px solid black; margin-bottom: 10px;">
+                        <div class="card custom-card"
+                            style="border: 2px solid black; margin-bottom: 10px;margin-top: 60px;">
                             <img src="pic/tournament-sports-league-logo-emblem_1366-201.avif " class="card-img-top"
-                                alt="..." />
+                                alt="..." height="250" />
                             <div class="card-body">
                                 <h5 class="card-title" style="color: red;"> Tournaments Events</h5>
                                 <a href="tournamentFinder.html" class="btn btn-primary">Post Events</a>
@@ -147,9 +169,9 @@
                         </div>
                     </div>
                     <div class="col-md-4 " style="float: left;">
-                        <div class="card"
-                            style="border: 2px solid black; margin-bottom: 10px;">
-                            <img src="pic/settings.jpg" class="card-img-top" alt="..." />
+                        <div class="card custom-card"
+                            style="border: 2px solid black; margin-bottom: 10px;margin-top: 60px;">
+                            <img src="pic/settings.jpg" class="card-img-top" alt="..."  height="250"/>
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(241, 81, 81);"> Settings</h5>
                                 <a href="" class="btn btn-primary" data-bs-toggle="modal"
